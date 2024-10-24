@@ -8,7 +8,7 @@ CANVAS_API_URL = os.environ.get('CANVAS_API_URL')
 CANVAS_API_TOKEN = os.environ.get('CANVAS_API_TOKEN')
 CANVAS_DEVELOPER_KEY = os.environ.get('CANVAS_DEVELOPER_KEY')
 
-canvas_url = f'{CANVAS_API_URL}/users?per_page=50'
+canvas_url = f'{CANVAS_API_URL}/users?enrollment_type=teacher&per_page=50'
 
 def get_canvas_data(url):
     data_set = []
@@ -20,6 +20,7 @@ def get_canvas_data(url):
         headers = {
             'Authorization' : f'Bearer {CANVAS_API_TOKEN}'
         }
+        print("Sending request...")
         response = requests.get(url, headers=headers)
     
         if response.status_code == 200:
@@ -33,8 +34,7 @@ def get_canvas_data(url):
         else:
             raise Exception(f'Error fetching Canvas data: {response.status_code}, {response.text}')
     total_time = time.time() - total_start_time
-    print(f"Fetched {total_items} items.")
-    print(f"Total time taken to fetch all data: {total_time:.2f} seconds.")
+    print(f"Total time taken to fetch {total_items} items: {total_time:.2f} seconds.")
     return data_set
 
 

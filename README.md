@@ -1,5 +1,5 @@
 # canvas_data
-This is a project to interact programatically with the Canvas LMS API
+This is a project to interact programatically with the Canvas LMS API so that adminstrators can monitor activity and interact with the data en masse.
 
 Getting Started
 
